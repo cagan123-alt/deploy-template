@@ -1,0 +1,26 @@
+# traefik/traefik.yml
+api:
+  dashboard: true
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+log:
+  level: DEBUG
+
+certificatesResolvers:
+  myresolver:
+    acme:
+      email: parlapancagan0907@gmail.com
+      storage: /certs/acme.json
+      httpChallenge:
+        # used during the challenge
+        entryPoint: web
+      tlsChallenge: {}
+      dnsChallenge:
+        provider: "cloudflare"
+        CLOUDFLARE_EMAIL: "parlapancagan0907@gmail.com"
+        CLOUDFLARE_API_KEY: "YgMHLejGRTSzQrpwlwHirJQR6zy6f3ixn10mcQ1G"
